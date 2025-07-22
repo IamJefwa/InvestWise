@@ -82,23 +82,23 @@ AUTH_USER_MODEL = 'user_auth.User'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'investwise',           # your database name
-        'USER': 'postgres',              # your PostgreSQL username
-        'PASSWORD': 'mutai/postgres25',      # your PostgreSQL password
-        'HOST': 'localhost',             # or IP of DB server
-        'PORT': '5432',                  # default PostgreSQL port
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'investwise',           # your database name
+#         'USER': 'postgres',              # your PostgreSQL username
+#         'PASSWORD': 'mutai/postgres25',      # your PostgreSQL password
+#         'HOST': 'localhost',             # or IP of DB server
+#         'PORT': '5432',                  # default PostgreSQL port
+#     }
+# }
 
 
 # Password validation
