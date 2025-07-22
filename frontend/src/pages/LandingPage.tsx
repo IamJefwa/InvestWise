@@ -226,10 +226,10 @@ const LandingPage: React.FC = () => {
               </Link>
               
               <Link
-                to="/investor-dashboard"
+                to="/signup"
                 className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 border-2 border-white/30 hover:border-white/50"
               >
-                Investor Login
+                Join Now
               </Link>
             </div>
           </motion.div>
@@ -259,8 +259,8 @@ const LandingPage: React.FC = () => {
               <ul className="space-y-2 text-gray-400">
                 <li><Link to="/business-discovery" className="hover:text-green-500 transition-colors">Business Discovery</Link></li>
                 <li><Link to="/legal-center" className="hover:text-green-500 transition-colors">Legal Center</Link></li>
-                <li><Link to="/investor-dashboard" className="hover:text-green-500 transition-colors">Investor Dashboard</Link></li>
-                <li><Link to="/business-dashboard" className="hover:text-green-500 transition-colors">Business Dashboard</Link></li>
+                <li><Link to="/login" className="hover:text-green-500 transition-colors">Login</Link></li>
+                <li><Link to="/signup" className="hover:text-green-500 transition-colors">Sign Up</Link></li>
               </ul>
             </div>
             
