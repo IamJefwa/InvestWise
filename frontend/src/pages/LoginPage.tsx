@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
+import { useAuth } from '../contexts/AuthContext';
 import { 
   Mail, 
   Lock, 
@@ -20,22 +21,37 @@ const LoginPage: React.FC = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
     setIsLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      await login(formData);
+      
       // Navigate to appropriate dashboard based on user type
       if (userType === 'investor') {
         navigate('/investor-dashboard');
       } else {
         navigate('/business-dashboard');
       }
-    }, 1500);
+    } catch (err: any) {
+      if (err.message.includes('verify your email')) {
+        setError('Please verify your email before logging in.');
+        // Optionally redirect to OTP verification
+        navigate('/verify-otp', { state: { email: formData.email } });
+      } else if (err.message.includes('temporarily locked')) {
+        setError('Account temporarily locked due to multiple failed attempts. Please try again later.');
+      } else {
+        setError(err.message || 'Login failed. Please check your credentials.');
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -66,6 +82,13 @@ const LoginPage: React.FC = () => {
                   Sign in to your InvestWise account
                 </p>
               </div>
+
+              {/* Error Message */}
+              {error && (
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-6">
+                  <p className="text-red-700 dark:text-red-300 text-sm">{error}</p>
+                </div>
+              )}
 
               {/* User Type Selection */}
               <div className="mb-6">
