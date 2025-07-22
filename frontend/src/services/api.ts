@@ -1,5 +1,5 @@
 
-const API_BASE_URL = 'http://0.0.0.0:8000/api/auth';
+const API_BASE_URL = 'http://localhost:8000/api/auth';
 
 export interface User {
   id: number;
