@@ -92,6 +92,12 @@ const InvestorDashboard: React.FC = () => {
                 <button className="p-2 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow">
                   <Bell className="h-5 w-5 text-gray-600 dark:text-gray-300" />
                 </button>
+                <button 
+                  onClick={() => window.location.href = '/profile'}
+                  className="p-2 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow"
+                >
+                  <User className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+                </button>
                 <button className="p-2 rounded-lg bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow">
                   <Settings className="h-5 w-5 text-gray-600 dark:text-gray-300" />
                 </button>

@@ -65,7 +65,7 @@ const OTPVerificationPage: React.FC = () => {
 
       // Navigate to login page after successful verification
       setTimeout(() => {
-        navigate('/login');
+        navigate('/profile-setup');
       }, 2000);
     } catch (err: any) {
       if (err.message.includes('locked')) {

@@ -16,8 +16,11 @@ import {
   DollarSign
 } from 'lucide-react';
 
+import { useNavigate } from 'react-router-dom';
+
 const BusinessOwnerDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
+  const navigate = useNavigate();
 
   const investorInterests = [
     {
@@ -66,7 +69,7 @@ const BusinessOwnerDashboard: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Navigation />
-      
+
       <div className="pt-20 pb-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
@@ -84,7 +87,7 @@ const BusinessOwnerDashboard: React.FC = () => {
                   Manage your business profile and connect with potential investors.
                 </p>
               </div>
-              
+
               <div className="flex items-center space-x-4 mt-4 md:mt-0">
                 <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
                   Update Profile
@@ -167,7 +170,7 @@ const BusinessOwnerDashboard: React.FC = () => {
                     Manage and respond to investor inquiries
                   </p>
                 </div>
-                
+
                 <div className="divide-y divide-gray-100 dark:divide-gray-700">
                   {investorInterests.map((interest) => (
                     <motion.div
@@ -191,11 +194,11 @@ const BusinessOwnerDashboard: React.FC = () => {
                               {interest.status.charAt(0).toUpperCase() + interest.status.slice(1)}
                             </span>
                           </div>
-                          
+
                           <p className="text-gray-600 dark:text-gray-300 mb-1">
                             {interest.company}
                           </p>
-                          
+
                           <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
                             <span className="flex items-center">
                               <DollarSign className="h-4 w-4 mr-1" />
@@ -205,13 +208,13 @@ const BusinessOwnerDashboard: React.FC = () => {
                             <span>{interest.date}</span>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-center space-x-3 mt-4 md:mt-0">
                           <button className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors">
                             <Eye className="h-4 w-4" />
                             <span>View Details</span>
                           </button>
-                          
+
                           <button className="flex items-center space-x-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors">
                             <MessageCircle className="h-4 w-4" />
                             <span>Chat</span>
@@ -238,7 +241,7 @@ const BusinessOwnerDashboard: React.FC = () => {
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                     Upload Documents
                   </h3>
-                  
+
                   <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-8 text-center hover:border-green-500 transition-colors cursor-pointer">
                     <Upload className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                     <p className="text-lg font-medium text-gray-900 dark:text-white mb-2">
@@ -260,7 +263,7 @@ const BusinessOwnerDashboard: React.FC = () => {
                       Uploaded Documents
                     </h3>
                   </div>
-                  
+
                   <div className="divide-y divide-gray-100 dark:divide-gray-700">
                     {documents.map((doc, index) => (
                       <div key={index} className="p-6 flex items-center justify-between">
@@ -275,7 +278,7 @@ const BusinessOwnerDashboard: React.FC = () => {
                             </p>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-center space-x-3">
                           {doc.status === 'approved' ? (
                             <span className="flex items-center text-green-600">
@@ -300,7 +303,7 @@ const BusinessOwnerDashboard: React.FC = () => {
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
                   Required Documents
                 </h3>
-                
+
                 <div className="space-y-4">
                   {[
                     'Business Registration Certificate',
@@ -318,7 +321,7 @@ const BusinessOwnerDashboard: React.FC = () => {
                     </div>
                   ))}
                 </div>
-                
+
                 <div className="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
                   <p className="text-sm text-green-800 dark:text-green-200">
                     <strong>Pro Tip:</strong> Complete your document verification to increase investor confidence and improve your matching score.
@@ -344,23 +347,26 @@ const BusinessOwnerDashboard: React.FC = () => {
                   [Business Analytics Chart Placeholder]
                 </div>
               </div>
-              
+
               {/* Quick Actions */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
                   Quick Actions
                 </h3>
                 <div className="space-y-4">
-                  <button className="w-full bg-green-600 hover:bg-green-700 text-white p-4 rounded-lg text-left transition-colors">
+                  <button 
+                    onClick={() => navigate('/profile')}
+                    className="w-full bg-green-600 hover:bg-green-700 text-white p-4 rounded-lg text-left transition-colors"
+                  >
                     <div className="flex items-center space-x-3">
-                      <Building2 className="h-6 w-6" />
+                      <Settings className="h-6 w-6" />
                       <div>
-                        <div className="font-medium">Update Business Profile</div>
+                        <div className="font-medium">Update Profile</div>
                         <div className="text-sm opacity-90">Keep your information current</div>
                       </div>
                     </div>
                   </button>
-                  
+
                   <button className="w-full bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-lg text-left transition-colors">
                     <div className="flex items-center space-x-3">
                       <Upload className="h-6 w-6" />
